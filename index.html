@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>concept. Personal Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(to bottom, #0a0e27, #1a1f4d);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Main container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+        
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-top: 30px;
+        }
+        
+        .title {
+            font-size: 42px;
+            background: linear-gradient(to right, #7289da, #9b59b6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: #a0a0c0;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+        
+        /* Content section - Vertical layout */
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            width: 100%;
+        }
+        
+        /* Box styling */
+        .info-box {
+            background-color: rgba(40, 42, 54, 0.85);
+            border-radius: 20px;
+            padding: 30px;
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(114, 137, 218, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .info-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        .box-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .box-icon {
+            font-size: 40px;
+            color: #7289da;
+            margin-right: 15px;
+        }
+        
+        .box-title {
+            font-size: 28px;
+            color: #fff;
+        }
+        
+        /* User info */
+        .user-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 20px;
+            border: 3px solid #7289da;
+        }
+        
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .username {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        
+        .user-id {
+            color: #a0a0c0;
+            font-size: 18px;
+            font-family: monospace;
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 8px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        /* Discord link */
+        .discord-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 25px;
+            background-color: #7289da;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            width: 100%;
+            max-width: 300px;
+        }
+        
+        .discord-link:hover {
+            background-color: #5a6fcf;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(114, 137, 218, 0.4);
+        }
+        
+        /* About me content */
+        .about-content {
+            line-height: 1.8;
+            font-size: 16px;
+            color: #d1d1e9;
+        }
+        
+        .about-content p {
+            margin-bottom: 15px;
+        }
+        
+        /* Music player */
+        .music-player {
+            background-color: rgba(40, 42, 54, 0.85);
+            border-radius: 20px;
+            padding: 30px;
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(155, 89, 182, 0.3);
+        }
+        
+        .music-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .album-cover {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-right: 20px;
+        }
+        
+        .album-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .song-details h3 {
+            font-size: 22px;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+        
+        .song-details p {
+            color: #a0a0c0;
+            font-size: 16px;
+        }
+        
+        /* Music controls */
+        .music-controls {
+            margin-top: 25px;
+        }
+        
+        .progress-area {
+            margin-bottom: 25px;
+        }
+        
+        /* Progress bar styling */
+        .progress-bar-container {
+            position: relative;
+            margin-bottom: 10px;
+        }
+        
+        .progress-bar {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            outline: none;
+            cursor: pointer;
+        }
+        
+        .progress-bar::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #fff;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(114, 137, 218, 0.8);
+            border: none;
+        }
+        
+        .progress-bar::-moz-range-thumb {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #fff;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(114, 137, 218, 0.8);
+            border: none;
+        }
+        
+        .timer {
+            display: flex;
+            justify-content: space-between;
+            color: #a0a0c0;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+        }
+        
+        .control-btn {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+        
+        .control-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .play-pause {
+            width: 60px;
+            height: 60px;
+            background-color: #7289da;
+            font-size: 28px;
+        }
+        
+        .play-pause:hover {
+            background-color: #5a6fcf;
+            transform: scale(1.1);
+        }
+        
+        /* Volume control - smaller */
+        .volume-control {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .volume-icon {
+            color: #a0a0c0;
+            font-size: 16px;
+            min-width: 20px;
+        }
+        
+        .volume-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 120px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            outline: none;
+            cursor: pointer;
+        }
+        
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #9b59b6;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .volume-slider::-moz-range-thumb {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #9b59b6;
+            cursor: pointer;
+            border: none;
+        }
+        
+        /* Snow effect */
+        .snowflakes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: #fff;
+            font-size: 1em;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+        
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+            color: #a0a0c0;
+            font-size: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            width: 100%;
+            position: relative;
+            z-index: 10;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .title {
+                font-size: 32px;
+            }
+            
+            .subtitle {
+                font-size: 16px;
+            }
+            
+            .info-box {
+                padding: 20px;
+            }
+            
+            .box-title {
+                font-size: 24px;
+            }
+            
+            .avatar {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .username {
+                font-size: 28px;
+            }
+            
+            .music-info {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .album-cover {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Snow effect -->
+    <div class="snowflakes" id="snowflakes"></div>
+    
+    <div class="container">
+        <header>
+            <h1 class="title">concept.</h1>
+            <p class="subtitle">Developer & Creative Thinker</p>
+        </header>
+        
+        <div class="content">
+            <!-- Discord Profile Box -->
+            <div class="info-box">
+                <div class="box-header">
+                    <i class="fab fa-discord box-icon"></i>
+                    <h2 class="box-title">Discord Profile</h2>
+                </div>
+                
+                <div class="user-info">
+                    <div class="avatar">
+                        <img id="discord-avatar" src="https://media.discordapp.net/attachments/1447268847303528490/1450177830330564699/image.png?ex=694196d9&is=69404559&hm=5f882eac0b6952e78c05b1440e70c0a26f882be9d2f34142e1055a86ceabfbe4&=&format=webp&quality=lossless&width=384&height=352" alt="Profile Picture">
+                    </div>
+                    
+                    <div class="username" id="discord-username">concept.</div>
+                    <div class="user-id" id="discord-user-id">ID: paayiz</div>
+                    
+                    <a href="https://discord.com/users/701834944523010165" class="discord-link" target="_blank">
+                        <i class="fab fa-discord"></i>
+                        <span>Connect on Discord</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- About Me Box -->
+            <div class="info-box">
+                <div class="box-header">
+                    <i class="fas fa-user-circle box-icon"></i>
+                    <h2 class="box-title">About Me</h2>
+                </div>
+                
+                <div class="about-content" id="about-content">
+                    <p>Hello! I'm concept., a passionate developer and creative thinker with an interest in web technologies and design.</p>
+                    <p>I love learning new technologies and building interesting projects. In my free time, I play games, listen to music, and work on personal projects.</p>
+                    <p><strong>Main skills:</strong> HTML, CSS, JavaScript, React, Node.js, Python</p>
+                    <p><strong>Interests:</strong> Programming, design, electronic music, video games</p>
+                </div>
+            </div>
+            
+            <!-- Music Player Box -->
+            <div class="music-player">
+                <div class="box-header">
+                    <i class="fas fa-music box-icon"></i>
+                    <h2 class="box-title">Now Playing</h2>
+                </div>
+                
+                <div class="music-info">
+                    <div class="album-cover">
+                        <img id="album-cover" src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Album Cover">
+                    </div>
+                    
+                    <div class="song-details">
+                        <h3 id="song-title">Midnight City</h3>
+                        <p id="song-artist">M83</p>
+                        <p id="song-album">Hurry Up, We're Dreaming</p>
+                    </div>
+                </div>
+                
+                <div class="music-controls">
+                    <div class="progress-area">
+                        <div class="progress-bar-container">
+                            <input type="range" class="progress-bar" id="progress-bar" min="0" max="100" value="0">
+                        </div>
+                        <div class="timer">
+                            <span id="current-time">0:00</span>
+                            <span id="duration">0:00</span>
+                        </div>
+                    </div>
+                    
+                    <div class="controls">
+                        <button class="control-btn" id="prev-btn">
+                            <i class="fas fa-step-backward"></i>
+                        </button>
+                        
+                        <button class="control-btn play-pause" id="play-pause-btn">
+                            <i class="fas fa-play" id="play-pause-icon"></i>
+                        </button>
+                        
+                        <button class="control-btn" id="next-btn">
+                            <i class="fas fa-step-forward"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="volume-control">
+                        <i class="fas fa-volume-up volume-icon" id="volume-icon"></i>
+                        <input type="range" class="volume-slider" id="volume-slider" min="0" max="100" value="70">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>concept. © 2025</p>
+        </footer>
+    </div>
+    
+    <script>
+        // ============================================
+        // USER INFORMATION - EDIT HERE
+        // ============================================
+        const userInfo = {
+            username: "concept.",
+            userId: "paayiz",
+            avatarUrl: "https://media.discordapp.net/attachments/1447268847303528490/1450177830330564699/image.png?ex=694196d9&is=69404559&hm=5f882eac0b6952e78c05b1440e70c0a26f882be9d2f34142e1055a86ceabfbe4&=&format=webp&quality=lossless&width=384&height=352",
+            aboutText: `Hello! I'm concept., a passionate developer and creative thinker with an interest in web technologies and design.
+
+I love learning new technologies and building interesting projects. In my free time, I play games, listen to music, and work on personal projects.
+
+<strong>Main skills:</strong> HTML, CSS, JavaScript, React, Node.js, Python
+
+<strong>Interests:</strong> Programming, design, electronic music, video games`,
+            discordLink: "https://discord.com/users/701834944523010165"
+        };
+        
+        const musicInfo = {
+            // برای تغییر آهنگ، این لینک را با لینک MP3 آهنگ مورد نظر خود جایگزین کنید
+            // مثال: audioUrl: "https://example.com/your-song.mp3"
+            // یا از سایت‌هایی مثل soundhelix.com برای آهنگ‌های تست استفاده کنید
+            audioUrl: "Inja Tehrane.mp3",
+            
+            // اطلاعات آهنگ
+            songTitle: "Inja Tehrane",
+            songArtist: "Hichkas",
+            songAlbum: "Shahre dood va khoon",
+            albumCover: "https://tajmusics.com/wp-content/uploads/2023/12/Inja-Tehrane.webp"
+        };
+        // ============================================
+        // END OF EDITABLE SECTION
+        // ============================================
+        
+        // Create snowflakes effect
+        function createSnowflakes() {
+            const snowflakesContainer = document.getElementById('snowflakes');
+            const snowflakeCount = 80;
+            
+            for (let i = 0; i < snowflakeCount; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.classList.add('snowflake');
+                snowflake.innerHTML = '❄';
+                
+                const size = Math.random() * 1.5 + 0.5;
+                snowflake.style.fontSize = `${size}em`;
+                
+                const startPosition = Math.random() * 100;
+                snowflake.style.left = `${startPosition}%`;
+                
+                const fallDuration = Math.random() * 10 + 10;
+                snowflake.style.animationDuration = `${fallDuration}s`;
+                
+                const delay = Math.random() * 5;
+                snowflake.style.animationDelay = `${delay}s`;
+                
+                snowflake.style.opacity = Math.random() * 0.7 + 0.3;
+                
+                snowflakesContainer.appendChild(snowflake);
+            }
+        }
+        
+        // Update the page with user info
+        function updatePageWithUserInfo() {
+            // Update Discord info
+            document.getElementById('discord-username').textContent = userInfo.username;
+            document.getElementById('discord-user-id').textContent = `ID: ${userInfo.userId}`;
+            document.getElementById('discord-avatar').src = userInfo.avatarUrl;
+            
+            // Update about me
+            document.getElementById('about-content').innerHTML = userInfo.aboutText;
+            
+            // Update Discord link
+            document.querySelector('.discord-link').href = userInfo.discordLink;
+            
+            // Update music info
+            document.getElementById('song-title').textContent = musicInfo.songTitle;
+            document.getElementById('song-artist').textContent = musicInfo.songArtist;
+            document.getElementById('song-album').textContent = musicInfo.songAlbum;
+            document.getElementById('album-cover').src = musicInfo.albumCover;
+        }
+        
+        // Music player functionality
+        class MusicPlayer {
+            constructor() {
+                this.audio = new Audio(musicInfo.audioUrl);
+                this.isPlaying = false;
+                this.currentTime = 0;
+                this.duration = 0;
+                this.volume = 0.7;
+                
+                // DOM elements
+                this.playPauseBtn = document.getElementById('play-pause-btn');
+                this.playPauseIcon = document.getElementById('play-pause-icon');
+                this.prevBtn = document.getElementById('prev-btn');
+                this.nextBtn = document.getElementById('next-btn');
+                this.progressBar = document.getElementById('progress-bar');
+                this.currentTimeEl = document.getElementById('current-time');
+                this.durationEl = document.getElementById('duration');
+                this.volumeSlider = document.getElementById('volume-slider');
+                this.volumeIcon = document.getElementById('volume-icon');
+                
+                this.isDraggingProgress = false;
+                this.isDraggingVolume = false;
+                
+                this.init();
+            }
+            
+            init() {
+                // Set initial volume
+                this.audio.volume = this.volume;
+                this.volumeSlider.value = this.volume * 100;
+                
+                // Load audio metadata
+                this.audio.addEventListener('loadedmetadata', () => {
+                    this.duration = this.audio.duration;
+                    this.durationEl.textContent = this.formatTime(this.duration);
+                });
+                
+                // Update time as audio plays
+                this.audio.addEventListener('timeupdate', () => {
+                    if (!this.isDraggingProgress) {
+                        this.currentTime = this.audio.currentTime;
+                        const progressPercent = (this.currentTime / this.duration) * 100 || 0;
+                        this.progressBar.value = progressPercent;
+                        this.currentTimeEl.textContent = this.formatTime(this.currentTime);
+                    }
+                });
+                
+                // Audio ended
+                this.audio.addEventListener('ended', () => {
+                    this.isPlaying = false;
+                    this.playPauseIcon.classList.remove('fa-pause');
+                    this.playPauseIcon.classList.add('fa-play');
+                    this.progressBar.value = 0;
+                    this.currentTimeEl.textContent = "0:00";
+                });
+                
+                // Play/pause button
+                this.playPauseBtn.addEventListener('click', () => this.togglePlay());
+                
+                // Previous button (restart song)
+                this.prevBtn.addEventListener('click', () => {
+                    this.audio.currentTime = 0;
+                    this.progressBar.value = 0;
+                    this.currentTimeEl.textContent = "0:00";
+                    if (this.isPlaying) {
+                        this.audio.play();
+                    }
+                });
+                
+                // Next button (restart song for demo)
+                this.nextBtn.addEventListener('click', () => {
+                    this.audio.currentTime = 0;
+                    this.progressBar.value = 0;
+                    this.currentTimeEl.textContent = "0:00";
+                    if (this.isPlaying) {
+                        this.audio.play();
+                    }
+                });
+                
+                // Progress bar events for dragging
+                this.progressBar.addEventListener('input', (e) => {
+                    this.isDraggingProgress = true;
+                    const value = e.target.value;
+                    const time = (value / 100) * this.duration;
+                    this.currentTimeEl.textContent = this.formatTime(time);
+                });
+                
+                this.progressBar.addEventListener('change', (e) => {
+                    const value = e.target.value;
+                    const time = (value / 100) * this.duration;
+                    this.audio.currentTime = time;
+                    this.isDraggingProgress = false;
+                });
+                
+                this.progressBar.addEventListener('mousedown', () => {
+                    this.isDraggingProgress = true;
+                });
+                
+                this.progressBar.addEventListener('mouseup', () => {
+                    this.isDraggingProgress = false;
+                    const value = this.progressBar.value;
+                    const time = (value / 100) * this.duration;
+                    this.audio.currentTime = time;
+                });
+                
+                // Volume control events
+                this.volumeSlider.addEventListener('input', (e) => {
+                    this.isDraggingVolume = true;
+                    const value = e.target.value;
+                    this.volume = value / 100;
+                    this.audio.volume = this.volume;
+                    
+                    // Update volume icon
+                    this.updateVolumeIcon();
+                });
+                
+                this.volumeSlider.addEventListener('change', () => {
+                    this.isDraggingVolume = false;
+                });
+                
+                this.volumeSlider.addEventListener('mousedown', () => {
+                    this.isDraggingVolume = true;
+                });
+                
+                this.volumeSlider.addEventListener('mouseup', () => {
+                    this.isDraggingVolume = false;
+                });
+                
+                // Initialize
+                this.updateVolumeIcon();
+            }
+            
+            togglePlay() {
+                if (this.isPlaying) {
+                    this.audio.pause();
+                    this.playPauseIcon.classList.remove('fa-pause');
+                    this.playPauseIcon.classList.add('fa-play');
+                } else {
+                    this.audio.play();
+                    this.playPauseIcon.classList.remove('fa-play');
+                    this.playPauseIcon.classList.add('fa-pause');
+                }
+                this.isPlaying = !this.isPlaying;
+            }
+            
+            formatTime(seconds) {
+                if (isNaN(seconds) || !isFinite(seconds)) return "0:00";
+                
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+            
+            updateVolumeIcon() {
+                if (this.volume === 0) {
+                    this.volumeIcon.classList.remove('fa-volume-up', 'fa-volume-down');
+                    this.volumeIcon.classList.add('fa-volume-mute');
+                } else if (this.volume < 0.5) {
+                    this.volumeIcon.classList.remove('fa-volume-up', 'fa-volume-mute');
+                    this.volumeIcon.classList.add('fa-volume-down');
+                } else {
+                    this.volumeIcon.classList.remove('fa-volume-down', 'fa-volume-mute');
+                    this.volumeIcon.classList.add('fa-volume-up');
+                }
+            }
+        }
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            createSnowflakes();
+            updatePageWithUserInfo();
+            
+            // Initialize music player
+            const player = new MusicPlayer();
+            
+            // Log instructions to console
+            console.log("==========================================");
+            console.log("HOW TO CHANGE THE MUSIC:");
+            console.log("1. Find the 'musicInfo' object in the JavaScript code (around line 345)");
+            console.log("2. Replace the 'audioUrl' with your own MP3 file URL");
+            console.log("3. You can also update the song title, artist, album, and cover image");
+            console.log("==========================================");
+            console.log("Current music info:", musicInfo);
+        });
+    </script>
+</body>
+</html>
